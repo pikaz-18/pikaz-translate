@@ -3,7 +3,7 @@
  * @Date: 2020-08-18 21:36:31
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-19 19:13:22
+ * @LastEditTime: 2020-08-19 19:46:50
  */
 const path = require('path');
 const fs = require('fs');
@@ -125,7 +125,7 @@ const kzI18nLang = async (p, l) => {
       zh = JSON.parse(zh) || {}
       langKey.forEach(key => {
         if (Object.keys(zh).indexOf(key) === -1) {
-          zh[key] = ''
+          zh[key] = zh[key]
         }
       })
       const err = fs.writeFileSync(lPath, JSON.stringify(zh), 'utf8')
