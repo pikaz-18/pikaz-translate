@@ -1,0 +1,25 @@
+{
+  "name": "kz-i18n-translate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/kz-i18n-translate.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "i18n",
+    "translate"
+  ],
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "license": "MIT",
+  "author": "pikaz",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
