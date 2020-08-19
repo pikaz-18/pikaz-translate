@@ -4,7 +4,7 @@
 package.json文件中写入
 ```js
   "devDependencies": {
-    "kz-i18n-translate": "^4.43.0"
+    "kz-i18n-translate": "git+https://gitlab.kuaizitech.cn/zouzheng/kz-i18n-translate.git"
   },
 ```
 执行
