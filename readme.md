@@ -26,5 +26,5 @@ path|需写入的中文json文件路径，如'i18n/zh'|string|--|--
 ### kzI18nTranslate函数参数
 参数|说明|类型|可选值|默认值
 -|-|-|-|-
-zh|中文语言文件路径，如'i18n/zh'|String|--|--
-en|英文语言文件路径，如'i18n/en'|string|--|--
+zh|中文语言json文件路径，如'i18n/zh'|String|--|--
+en|英文语言json文件路径，如'i18n/en'|string|--|--
