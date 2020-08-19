@@ -3,7 +3,7 @@
  * @Date: 2020-08-18 21:36:31
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-19 19:46:50
+ * @LastEditTime: 2020-08-19 19:58:20
  */
 const path = require('path');
 const fs = require('fs');
@@ -40,9 +40,10 @@ const fileTra = (content) => {
             // 读取文件
             const fileContent = fs.readFileSync(filedir, 'utf-8')
             //  提取t('')或t("")里的内容
-            const single = fileContent.match(/t\(\'.*\'\)/g) || []
-            const double = fileContent.match(/t\(\".*\"\)/g) || []
-            const lang = [...single, ...double]
+            const single = fileContent.match(/(\$|\.)t\((\'|\")([^\)\'\"]+)(\'|\")(,([^\)\'\"]+))?\)/gm) || []
+            // const double = fileContent.match(/t\(\".*\"\)/g) || []
+            // const lang = [...single, ...double]
+            const lang = [...single]
             lang.forEach(item => {
               const key = item.substring(3, item.length - 2)
               if (langKey.indexOf(key) === -1 && key !== '') {
