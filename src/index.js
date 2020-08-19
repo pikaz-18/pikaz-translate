@@ -3,7 +3,7 @@
  * @Date: 2020-08-18 21:36:31
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-19 19:58:20
+ * @LastEditTime: 2020-08-19 20:31:29
  */
 const path = require('path');
 const fs = require('fs');
@@ -12,6 +12,7 @@ const axios = require('axios');
 // node执行路径
 const dirPath = process.cwd()
 
+// 语言json文件key
 const langKey = []
 
 /**
@@ -39,15 +40,11 @@ const fileTra = (content) => {
           } else {
             // 读取文件
             const fileContent = fs.readFileSync(filedir, 'utf-8')
-            //  提取t('')或t("")里的内容
-            const single = fileContent.match(/(\$|\.)t\((\'|\")([^\)\'\"]+)(\'|\")(,([^\)\'\"]+))?\)/gm) || []
-            // const double = fileContent.match(/t\(\".*\"\)/g) || []
-            // const lang = [...single, ...double]
-            const lang = [...single]
+            const lang=getTranslateKey(fileContent)
             lang.forEach(item => {
-              const key = item.substring(3, item.length - 2)
-              if (langKey.indexOf(key) === -1 && key !== '') {
-                langKey.push(key)
+              // const key = item.substring(3, item.length - 2)
+              if (langKey.indexOf(item) === -1 || item === '') {
+                langKey.push(item)
               }
             })
           }
@@ -56,6 +53,21 @@ const fileTra = (content) => {
       }
     });
   })
+}
+
+/**
+ * @description: 匹配t('')或t("")里的内容
+ * @param {type} 
+ * @return {type} 
+ */
+const getTranslateKey=(source)=> {
+  let result = []
+  const reg = /(\$|\.)t\((\'|\")([^\)\'\"]+)(\'|\")(,([^\)\'\"]+))?\)/gm
+  let matchKey
+  while (matchKey = reg.exec(source)) {
+    result.push(matchKey[3])
+  }
+  return result
 }
 
 /**
@@ -126,7 +138,7 @@ const kzI18nLang = async (p, l) => {
       zh = JSON.parse(zh) || {}
       langKey.forEach(key => {
         if (Object.keys(zh).indexOf(key) === -1) {
-          zh[key] = zh[key]
+          zh[key] = key
         }
       })
       const err = fs.writeFileSync(lPath, JSON.stringify(zh), 'utf8')
@@ -172,4 +184,7 @@ const kzI18nTranslate = async (zh, en) => {
   })
 }
 
-module.exports = {kzI18nLang,kzI18nTranslate}
+// const txtField = `${i18n.t('曝光数排行榜')},${i18n.t('点击率排行榜')},${i18n.t('ROI排行榜')},${i18n.t('点击数排行榜')}`
+kzI18nLang('src', 'zh')
+
+// module.exports = {kzI18nLang,kzI18nTranslate}
