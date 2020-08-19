@@ -3,7 +3,7 @@
  * @Date: 2020-08-18 21:36:31
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-19 20:31:29
+ * @LastEditTime: 2020-08-19 20:34:15
  */
 const path = require('path');
 const fs = require('fs');
@@ -184,7 +184,4 @@ const kzI18nTranslate = async (zh, en) => {
   })
 }
 
-// const txtField = `${i18n.t('曝光数排行榜')},${i18n.t('点击率排行榜')},${i18n.t('ROI排行榜')},${i18n.t('点击数排行榜')}`
-kzI18nLang('src', 'zh')
-
-// module.exports = {kzI18nLang,kzI18nTranslate}
+module.exports = {kzI18nLang,kzI18nTranslate}
