@@ -3,7 +3,7 @@
  * @Date: 2020-08-18 21:36:31
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-19 18:32:44
+ * @LastEditTime: 2020-08-19 19:13:22
  */
 const path = require('path');
 const fs = require('fs');
@@ -12,7 +12,7 @@ const axios = require('axios');
 // node执行路径
 const dirPath = process.cwd()
 
-langKey = []
+const langKey = []
 
 /**
  * @description: 文件夹遍历
