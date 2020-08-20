@@ -3,7 +3,7 @@
  * @Date: 2020-08-18 21:36:31
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-20 09:43:57
+ * @LastEditTime: 2020-08-20 10:00:10
  */
 const path = require('path');
 const fs = require('fs');
@@ -40,9 +40,9 @@ const fileTra = (content) => {
           } else {
             // 读取文件
             const fileContent = fs.readFileSync(filedir, 'utf-8')
+            // 提取i18n语言文字
             const lang=getTranslateKey(fileContent)
             lang.forEach(item => {
-              // const key = item.substring(3, item.length - 2)
               if (langKey.indexOf(item) === -1 || item === '') {
                 langKey.push(item)
               }
@@ -71,7 +71,7 @@ const getTranslateKey=(source)=> {
 }
 
 /**
- * @description: 读取文件
+ * @description: 判断是文件还是文件夹
  * @param {String} filedir/文件路径
  * @return {type} 
  */
