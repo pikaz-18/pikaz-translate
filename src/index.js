@@ -3,7 +3,7 @@
  * @Date: 2020-08-18 21:36:31
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-19 20:34:15
+ * @LastEditTime: 2020-08-20 09:43:57
  */
 const path = require('path');
 const fs = require('fs');
@@ -131,7 +131,7 @@ const kzI18nLang = async (p, l) => {
   const tPath = path.join(dirPath, p);
   await fileTra(tPath)
   // 写入语言文件
-  const lPath = path.join(dirPath, l) + '.json';
+  const lPath = path.join(dirPath, l);
   let zh = fs.readFileSync(lPath, 'utf-8')
   return new Promise((resolve, reject) => {
     if (zh || zh === {}) {
@@ -159,10 +159,10 @@ const kzI18nLang = async (p, l) => {
  * @return {type} 
  */
 const kzI18nTranslate = async (zh, en) => {
-  const zhPath = path.join(dirPath, zh) + '.json';
+  const zhPath = path.join(dirPath, zh);
   let zhJson = fs.readFileSync(zhPath, 'utf-8');
   zhJson = JSON.parse(zhJson) || {};
-  const enPath = path.join(dirPath, en) + '.json';
+  const enPath = path.join(dirPath, en);
   let enJson = fs.readFileSync(enPath, 'utf-8');
   enJson = JSON.parse(enJson) || {};
   const key = []
