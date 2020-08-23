@@ -1,10 +1,11 @@
 {
-  "name": "kz-i18n-translate",
+  "name": "pikaz-i18n-translate",
   "version": "1.0.0",
   "description": "",
   "main": "lib/kz-i18n-translate.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "example":"node example/translate.js"
   },
   "keywords": [
     "i18n",

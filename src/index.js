@@ -3,7 +3,7 @@
  * @Date: 2020-08-18 21:36:31
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-20 10:00:10
+ * @LastEditTime: 2020-08-23 15:27:56
  */
 const path = require('path');
 const fs = require('fs');
@@ -14,6 +14,22 @@ const dirPath = process.cwd()
 
 // 语言json文件key
 const langKey = []
+
+// ZH_CN2EN 中文　»　英语
+// ZH_CN2JA 中文　»　日语
+// ZH_CN2KR 中文　»　韩语
+// ZH_CN2FR 中文　»　法语
+// ZH_CN2RU 中文　»　俄语
+// ZH_CN2SP 中文　»　西语
+
+const language={
+  en:'ZH_CN2EN', //英语
+  ja:'ZH_CN2JA', //日语
+  kr:'ZH_CN2KR', //韩语
+  fr:'ZH_CN2FR', //法语
+  ru:'ZH_CN2RU', //俄语
+  sp:'ZH_CN2SP'  //西语
+}
 
 /**
  * @description: 文件夹遍历
@@ -99,15 +115,16 @@ const fileRead = (filedir) => {
 
 /**
  * @description: 翻译接口
- * @param {type} 
+ * @param {String} zh/翻译文本
+ * @param {String} lang/翻译语种
  * @return {type} 
  */
-const translate = zh => {
+const translate = (zh,lang) => {
   return new Promise((resolve, reject) => {
     axios.get('http://fanyi.youdao.com/translate', {
       params: {
         doctype: 'json',
-        type: 'ZH_CN2EN',
+        type: language[lang]||language['en'],
         i: zh
       }
     })
@@ -156,9 +173,10 @@ const kzI18nLang = async (p, l) => {
  * @description: 将中文json文件翻译写入英文json文件
  * @param {String} zh/中文语言文件路径
  * @param {String} en/英文语言文件路径
+ * @param {String} lang/语言种类，默认英文
  * @return {type} 
  */
-const kzI18nTranslate = async (zh, en) => {
+const kzI18nTranslate = async (zh, en,lang='en') => {
   const zhPath = path.join(dirPath, zh);
   let zhJson = fs.readFileSync(zhPath, 'utf-8');
   zhJson = JSON.parse(zhJson) || {};
@@ -172,7 +190,7 @@ const kzI18nTranslate = async (zh, en) => {
     }
   })
   for (let i = 0; i < key.length; i++) {
-    const e = await translate(key[i])
+    const e = await translate(key[i],lang)
     enJson[key[i]] = e
   }
   return new Promise((resolve, reject) => {
