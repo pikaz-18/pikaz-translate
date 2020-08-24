@@ -3,10 +3,10 @@
  * @Date: 2020-08-19 18:21:20
  * @Author: zouzheng
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-08-25 00:13:11
+ * @LastEditTime: 2020-08-25 00:33:05
 -->
 
-# pikaz-i18n-translate
+# pikaz-translate
 
 ## 说明
 
@@ -16,9 +16,9 @@ ps:翻译接口有请求频率限制，若一次翻译不成功，建议多试�
 ## 安装
 
 ```bash
-npm install --save-dev pikaz-i18n-translate
+npm install --save-dev pikaz-translate
 
-yarn add pikaz-excel-js
+yarn add pikaz-translate
 ```
 
 ## 调用方法
@@ -26,7 +26,7 @@ yarn add pikaz-excel-js
 建立一个js文件，写入以下内容
 
 ```js
-const { pikazI18nLang, pikazI18nTranslate } = require('pikaz-i18n-translate')
+const { pikazI18nLang, pikazI18nTranslate } = require('pikaz-translate')
 
 /**
  * @description: 翻译
@@ -45,7 +45,7 @@ translate('src','src/i18n/zh.json','src/i18n/en.json')
 
 ## 示例
 
-[示例代码](https://github.com/pikaz-18/pikaz-i18n-translate/tree/master/example)
+[示例代码](https://github.com/pikaz-18/pikaz-translate/tree/master/example)
 
 ### pikazI18nLang(dir,zh) 函数参数(提取目录下所有文件的i18n语言并写入中文json文件)
 

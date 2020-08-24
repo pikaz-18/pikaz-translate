@@ -1,9 +1,9 @@
 {
-    "name": "pikaz-i18n-translate",
-    "version": "0.0.1",
+    "name": "pikaz-translate",
+    "version": "0.0.2",
     "description": "Generate i18N language files",
     "private": false,
-    "main": "lib/pikaz-i18n-translate.js",
+    "main": "lib/pikaz-translate.js",
     "scripts": {
         "build": "webpack",
         "example": "node example/translate.js"
@@ -26,9 +26,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/pikaz-18/pikaz-i18n-translate.git"
+        "url": "https://github.com/pikaz-18/pikaz-translate.git"
     },
     "bugs": {
-        "url": "https://github.com/pikaz-18/pikaz-i18n-translate/issues"
+        "url": "https://github.com/pikaz-18/pikaz-translate/issues"
     }
 }
